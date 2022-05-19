@@ -24,6 +24,24 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
         http_response_code(200);
     }
 
+}else if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+    $datosRecibidosJSON = file_get_contents("php://input");
+
+    $datosArray = $obj_empleados->POST($datosRecibidosJSON);
+
+     header('Content-Type: application/json');
+
+     if(isset($datosArray["result"]["error_id"])){
+         $respuestaCodigo = $datosArray["result"]["error_id"];
+         http_response_code($respuestaCodigo);
+     }else{
+         http_response_code(200);
+     }
+
+     echo json_encode($datosArray);
+
+
 }
 
 
