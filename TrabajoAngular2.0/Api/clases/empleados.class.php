@@ -14,7 +14,7 @@ class empleados extends conexion{
     private $Observaciones_1 ="";
     private $Fecha_ingreso ="0000-00-00";
     private $Cargo ="";
-    private $Departamente ="";
+    private $Departamento ="";
     private $Provincia_2 ="";
     private $Sueldo ="";
     private $Jornada ="";
@@ -40,45 +40,55 @@ class empleados extends conexion{
         $query = "SELECT * FROM $this->table WHERE id_Empleado = $id";
         return parent::get_datos($query);
     }
-
+    //INSERTAR
     public function POST($json){
         $obj_respuestas = new respuestas();
         $datosArr = json_decode($json,true);
    
-        if(!isset($datosArr['nombre']) || !isset($datosArr['dni']) || !isset($datosArr['correo'])){
-            //LLAMAMOS A UN ERROR
+        if(!isset($datosArr['Nombre']) || !isset($datosArr['Apellido']) || !isset($datosArr['Cedula'])){
+            
             return $obj_respuestas->error_400();
-            //SI RECIBIMOS LOS DATOS CORRECTOS PARA ACTUALIZAR
+            
         }else{
-            //ASIGNA VALOR A LA VARIABLES DESDE EL JSON QUE RECIBES
-            $this->Nombre = $datosArr['nombre'];
-            $this->DNI = $datosArr['dni'];
-            $this->Correo = $datosArr['correo'];
-            //VERIFICA SI TIENE DATOS EL JSON
-            if(isset($datosArr['direccion'])){
-                //LO ASIGNA
-                $this->Direccion = $datosArr['direccion'];      
+            $this->Nombre = $datosArr['Nombre'];
+            $this->Apellido = $datosArr['Apellido'];
+            $this->Cedula = $datosArr['Cedula'];
+            if(isset($datosArr['Provincia_1'])){
+                $this->Provincia_1 = $datosArr['Provincia_1'];      
             }
-            if(isset($datosArr['codigoPostal'])){
-                //LO ASIGNA
-                $this->CodigoPostal = $datosArr['codigoPostal'];      
+            if(isset($datosArr['Fecha_Nacimiento'])){
+                $this->Fecha_Nacimiento = $datosArr['Fecha_Nacimiento'];      
             }
-            if(isset($datosArr['telefono'])){
-                //LO ASIGNA
-                $this->Telefono = $datosArr['telefono'];      
+            if(isset($datosArr['Email'])){
+                $this->Email = $datosArr['Email'];      
             }
-            if(isset($datosArr['genero'])){
-                //LO ASIGNA
-                $this->Genero = $datosArr['genero'];      
+            if(isset($datosArr['Observaciones_1'])){
+                $this->Observaciones_1 = $datosArr['Observaciones_1'];      
             }
-            if(isset($datosArr['fechaNacimiento'])){
-                //LO ASIGNA
-                $this->FechaNacimiento = $datosArr['fechaNacimiento'];      
+            if(isset($datosArr['Fecha_ingreso'])){
+                $this->Fecha_ingreso = $datosArr['Fecha_ingreso'];      
             }
+            if(isset($datosArr['Cargo'])){
+                $this->Cargo = $datosArr['Cargo'];      
+            }
+            if(isset($datosArr['Departamento'])){
+                $this->Departamento = $datosArr['Departamento'];      
+            }
+            if(isset($datosArr['Provincia_2'])){
+                $this->Provincia_2 = $datosArr['Provincia_2'];      
+            }
+            if(isset($datosArr['Sueldo'])){
+                $this->Sueldo = $datosArr['Sueldo'];      
+            }
+            if(isset($datosArr['Jornada'])){
+                $this->Jornada = $datosArr['Jornada'];      
+            }
+            if(isset($datosArr['Observaciones_2'])){
+                $this->Observaciones_2 = $datosArr['Observaciones_2'];      
+            }
+           
             $resultado = $this->insertarDatos();
-            //SI EL RESULTADO TIENE DATOS
             if($resultado){
-                //OBTIENE EL VALOR DEL ARRAY DE RESPUESTAS
                 $respuesta = $obj_respuestas->response;
                 $respuesta["result"] = array("pacienteId"=>$resultado);
                 return $respuesta;
