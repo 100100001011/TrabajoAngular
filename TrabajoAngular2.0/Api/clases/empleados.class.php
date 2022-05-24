@@ -2,120 +2,197 @@
 require_once 'respuestas.class.php';
 require_once 'conexion/conexion.php';
 
-class empleados extends conexion{
+class empleados extends conexion
+{
     private $table = 'empleados';
-    private $id_Empleado ="";
-    private $Nombre ="";
-    private $Apellido ="";
-    private $Cedula ="";
-    private $Provincia_1 ="";
-    private $Fecha_Nacimiento ="0000-00-00";
-    private $Email ="";
-    private $Observaciones_1 ="";
-    private $Fecha_ingreso ="0000-00-00";
-    private $Cargo ="";
-    private $Departamento ="";
-    private $Provincia_2 ="";
-    private $Sueldo ="";
-    private $Jornada ="";
-    private $Observaciones_2 ="";
-    
+    private $id_Empleado = "";
+    private $Nombre = "";
+    private $Apellido = "";
+    private $Cedula = "";
+    private $Provincia_1 = "";
+    private $Fecha_Nacimiento = "0000-00-00";
+    private $Email = "";
+    private $Observaciones_1 = "";
+    private $Foto = "";
+    private $Fecha_ingreso = "0000-00-00";
+    private $Cargo = "";
+    private $Departamente = "";
+    private $Provincia_2 = "";
+    private $Sueldo = "";
+    private $Jornada = "";
+    private $Observaciones_2 = "";
+
     //TODOS LOS DATOS POR PAGINAS
-    public function listaEmpleados($pagina = 1){
+    public function listaEmpleados($pagina = 1)
+    {
         $inicio = 0;
         $fin = 50;
-        if($pagina > 1 ){
-            $inicio = ($fin * ($pagina - 1 )) + 1;
+        if ($pagina > 1) {
+            $inicio = ($fin * ($pagina - 1)) + 1;
             $fin = $fin * $pagina;
         }
 
-        $query = "SELECT * FROM $this->table limit $inicio , $fin"; 
+        $query = "SELECT * FROM $this->table limit $inicio , $fin";
         $datos = parent::get_datos($query);
         return $datos;
-
     }
 
     //DATOS POR ID
-    public function GetEmpleadosId($id){
+    public function GET_empleadosId($id){
         $query = "SELECT * FROM $this->table WHERE id_Empleado = $id";
         return parent::get_datos($query);
     }
     //INSERTAR
     public function POST($json){
         $obj_respuestas = new respuestas();
-        $datosArr = json_decode($json,true);
-   
-        if(!isset($datosArr['Nombre']) || !isset($datosArr['Apellido']) || !isset($datosArr['Cedula'])){
-            
+        $datosArr = json_decode($json, true);
+
+        if (!isset($datosArr['Nombre']) || !isset($datosArr['Apellido']) || !isset($datosArr['Cedula'])) {
+            //echo "error";
             return $obj_respuestas->error_400();
-            
-        }else{
+        } else {
             $this->Nombre = $datosArr['Nombre'];
             $this->Apellido = $datosArr['Apellido'];
             $this->Cedula = $datosArr['Cedula'];
-            if(isset($datosArr['Provincia_1'])){
-                $this->Provincia_1 = $datosArr['Provincia_1'];      
+            if (isset($datosArr['Provincia1'])) {
+                $this->Provincia_1 = $datosArr['Provincia1'];
             }
-            if(isset($datosArr['Fecha_Nacimiento'])){
-                $this->Fecha_Nacimiento = $datosArr['Fecha_Nacimiento'];      
+            if (isset($datosArr['FechaNacimiento'])) {
+                $this->Fecha_Nacimiento = $datosArr['FechaNacimiento'];
             }
-            if(isset($datosArr['Email'])){
-                $this->Email = $datosArr['Email'];      
+            if (isset($datosArr['Email'])) {
+                $this->Email = $datosArr['Email'];
             }
-            if(isset($datosArr['Observaciones_1'])){
-                $this->Observaciones_1 = $datosArr['Observaciones_1'];      
+            if (isset($datosArr['Observaciones1'])) {
+                $this->Observaciones_1 = $datosArr['Observaciones1'];
             }
-            if(isset($datosArr['Fecha_ingreso'])){
-                $this->Fecha_ingreso = $datosArr['Fecha_ingreso'];      
+            if (isset($datosArr['Foto'])) {
+                $this->Foto = $datosArr['Foto'];
             }
-            if(isset($datosArr['Cargo'])){
-                $this->Cargo = $datosArr['Cargo'];      
+            if (isset($datosArr['Fechaingreso'])) {
+                $this->Fecha_ingreso = $datosArr['Fechaingreso'];
             }
-            if(isset($datosArr['Departamento'])){
-                $this->Departamento = $datosArr['Departamento'];      
+            if (isset($datosArr['Cargo'])) {
+                $this->Cargo = $datosArr['Cargo'];
             }
-            if(isset($datosArr['Provincia_2'])){
-                $this->Provincia_2 = $datosArr['Provincia_2'];      
+            if (isset($datosArr['Departamente'])) {
+                $this->Departamento = $datosArr['Departamente'];
             }
-            if(isset($datosArr['Sueldo'])){
-                $this->Sueldo = $datosArr['Sueldo'];      
+            if (isset($datosArr['Provincia2'])) {
+                $this->Provincia_2 = $datosArr['Provincia2'];
             }
-            if(isset($datosArr['Jornada'])){
-                $this->Jornada = $datosArr['Jornada'];      
+            if (isset($datosArr['Sueldo'])) {
+                $this->Sueldo = $datosArr['Sueldo'];
             }
-            if(isset($datosArr['Observaciones_2'])){
-                $this->Observaciones_2 = $datosArr['Observaciones_2'];      
+            if (isset($datosArr['Jornada'])) {
+                $this->Jornada = $datosArr['Jornada'];
             }
-           
+            if (isset($datosArr['Observaciones2'])) {
+                $this->Observaciones_2 = $datosArr['Observaciones2'];
+            }
+
             $resultado = $this->insertarDatos();
-            if($resultado){
+            //echo $resultado;
+
+            if ($resultado) {
                 $respuesta = $obj_respuestas->response;
-                $respuesta["result"] = array("pacienteId"=>$resultado);
+                $respuesta["result"] = array("pacienteId" => $resultado);
                 return $respuesta;
-            }else{
+            } else {
                 return $obj_respuestas->error_500();
             }
-            
-
         }
     }
 
     private function insertarDatos(){
-        
-        $query ="INSERT INTO $this->table(DNI, Nombre, Direccion, CodigoPostal, Telefono, Genero, FechaNacimiento, Correo)"
-        ." VALUES ('$this->DNI','$this->Nombre','$this->Direccion','$this->CodigoPostal','$this->Telefono','$this->Genero','$this->FechaNacimiento','$this->Correo')";
+        $query = "INSERT INTO empleados( Nombre, Apellido, Cedula, Provincia_1, Fecha_Nacimiento, Email, Observaciones_1, Foto, Fecha_ingreso, Cargo, Departamente, Provincia_2, Sueldo, Jornada, Observaciones_2) 
+        VALUES ('$this->Nombre','$this->Apellido','$this->Apellido','$this->Provincia_1','$this->Fecha_Nacimiento','$this->Email','$this->Observaciones_1','$this->Foto','$this->Fecha_ingreso','$this->Cargo',
+        '$this->Departamente','$this->Provincia_2','$this->Sueldo','$this->Jornada','$this->Observaciones_2 ')";
+
+        $resp = parent::InsertId($query);
+        if ($resp) {
+            return $resp;
+        } else {
+            return 0;
+        }
+    }
+
+
+    public function PUT($json){
+
+        $obj_respuestas = new respuestas();
+
+        $datosArr = json_decode($json, true);
+
+        if (!isset($datosArr['Nombre']) || !isset($datosArr['Apellido']) || !isset($datosArr['Cedula'])) {
+            //echo "error";
+            return $obj_respuestas->error_400();
+        } else {
+            $this->Nombre = $datosArr['Nombre'];
+            $this->Apellido = $datosArr['Apellido'];
+            $this->Cedula = $datosArr['Cedula'];
+            if (isset($datosArr['Provincia1'])) {
+                $this->Provincia_1 = $datosArr['Provincia1'];
+            }
+            if (isset($datosArr['FechaNacimiento'])) {
+                $this->Fecha_Nacimiento = $datosArr['FechaNacimiento'];
+            }
+            if (isset($datosArr['Email'])) {
+                $this->Email = $datosArr['Email'];
+            }
+            if (isset($datosArr['Observaciones1'])) {
+                $this->Observaciones_1 = $datosArr['Observaciones1'];
+            }
+            if (isset($datosArr['Foto'])) {
+                $this->Foto = $datosArr['Foto'];
+            }
+            if (isset($datosArr['Fechaingreso'])) {
+                $this->Fecha_ingreso = $datosArr['Fechaingreso'];
+            }
+            if (isset($datosArr['Cargo'])) {
+                $this->Cargo = $datosArr['Cargo'];
+            }
+            if (isset($datosArr['Departamente'])) {
+                $this->Departamento = $datosArr['Departamente'];
+            }
+            if (isset($datosArr['Provincia2'])) {
+                $this->Provincia_2 = $datosArr['Provincia2'];
+            }
+            if (isset($datosArr['Sueldo'])) {
+                $this->Sueldo = $datosArr['Sueldo'];
+            }
+            if (isset($datosArr['Jornada'])) {
+                $this->Jornada = $datosArr['Jornada'];
+            }
+            if (isset($datosArr['Observaciones2'])) {
+                $this->Observaciones_2 = $datosArr['Observaciones2'];
+            }
+            $resultado = $this->actualizarDatos();
+
+            if ($resultado) {
+                $respuesta = $obj_respuestas->response;
+                $respuesta["result"] = array("pacienteId" => $this->PacienteId);
+                return $respuesta;
+            } else {
+                return $obj_respuestas->error_500();
+            }
+        }
+    }
+
+    private function actualizarDatos(){
+        $query = "UPDATE $this->table SET DNI='$this->DNI',Nombre='$this->Nombre',Direccion='$this->Direccion',CodigoPostal='$this->CodigoPostal',"
+        ."Telefono='$this->Telefono',Genero='$this->Genero',FechaNacimiento='$this->FechaNacimiento',Correo='$this->Correo' WHERE "
+        ."PacienteId='$this->PacienteId'";
         
         //print($query);
-        $resp = parent::InsertId($query);
+        //EJECUTA  FUNCION PARA ACTUALIZAR
+        $resp = parent::noQuery($query);
         //echo $resp;
-        if($resp){
+        if($resp >= 1){
             return $resp;
         }else{
             return 0;
         }
-
+        
     }
-    
-
-
 }
