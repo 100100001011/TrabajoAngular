@@ -105,9 +105,9 @@ class empleados extends conexion
     }
 
     private function insertarDatos(){
-        $query = "INSERT INTO empleados( Nombre, Apellido, Cedula, Provincia_1, Fecha_Nacimiento, Email, Observaciones_1, Foto, Fecha_ingreso, Cargo, Departamente, Provincia_2, Sueldo, Jornada, Observaciones_2) 
-        VALUES ('$this->Nombre','$this->Apellido','$this->Apellido','$this->Provincia_1','$this->Fecha_Nacimiento','$this->Email','$this->Observaciones_1','$this->Foto','$this->Fecha_ingreso','$this->Cargo',
-        '$this->Departamente','$this->Provincia_2','$this->Sueldo','$this->Jornada','$this->Observaciones_2 ')";
+        $query = "INSERT INTO $this->table( Nombre, Apellido, Cedula, Provincia_1, Fecha_Nacimiento, Email, Observaciones_1, Foto, Fecha_ingreso, Cargo, Departamente, Provincia_2, Sueldo, Jornada, Observaciones_2) 
+        VALUES ('$this->Nombre','$this->Apellido','$this->Cedula','$this->Provincia_1','$this->Fecha_Nacimiento','$this->Email','$this->Observaciones_1','$this->Foto','$this->Fecha_ingreso','$this->Cargo',
+        '$this->Departamente','$this->Provincia_2','$this->Sueldo','$this->Jornada','$this->Observaciones_2')";
 
         $resp = parent::InsertId($query);
         if ($resp) {
@@ -124,13 +124,18 @@ class empleados extends conexion
 
         $datosArr = json_decode($json, true);
 
-        if (!isset($datosArr['Nombre']) || !isset($datosArr['Apellido']) || !isset($datosArr['Cedula'])) {
+        if ( !isset($datosArr['id_Empleado']) || !isset($datosArr['Nombre']) ) {
             //echo "error";
             return $obj_respuestas->error_400();
         } else {
+            $this->id_Empleado = $datosArr['id_Empleado'];
             $this->Nombre = $datosArr['Nombre'];
-            $this->Apellido = $datosArr['Apellido'];
-            $this->Cedula = $datosArr['Cedula'];
+            if (isset($datosArr['Apellido'])) {
+                $this->Apellido = $datosArr['Apellido'];
+            }
+            if (isset($datosArr['Cedula'])) {
+                $this->Cedula = $datosArr['Cedula'];
+            }
             if (isset($datosArr['Provincia1'])) {
                 $this->Provincia_1 = $datosArr['Provincia1'];
             }
@@ -171,7 +176,7 @@ class empleados extends conexion
 
             if ($resultado) {
                 $respuesta = $obj_respuestas->response;
-                $respuesta["result"] = array("pacienteId" => $this->PacienteId);
+                $respuesta["result"] = array("id_Empleado" => $this->id_Empleado);
                 return $respuesta;
             } else {
                 return $obj_respuestas->error_500();
@@ -180,9 +185,9 @@ class empleados extends conexion
     }
 
     private function actualizarDatos(){
-        $query = "UPDATE $this->table SET DNI='$this->DNI',Nombre='$this->Nombre',Direccion='$this->Direccion',CodigoPostal='$this->CodigoPostal',"
-        ."Telefono='$this->Telefono',Genero='$this->Genero',FechaNacimiento='$this->FechaNacimiento',Correo='$this->Correo' WHERE "
-        ."PacienteId='$this->PacienteId'";
+        $query = "UPDATE $this->table SET Nombre='$this->Nombre',Apellido='$this->Apellido',Cedula='$this->Cedula',Provincia_1='$this->Provincia_1',Fecha_Nacimiento='$this->Fecha_Nacimiento',
+        Email='$this->Email',Observaciones_1='$this->Observaciones_1',Foto='$this->Foto',Fecha_ingreso='$this->Fecha_ingreso',Cargo='$this->Cargo',Departamente='$this->Departamente',Provincia_2='$this->Provincia_2',
+        Sueldo='$this->Sueldo',Jornada='$this->Jornada',Observaciones_2='$this->Observaciones_2' WHERE id_Empleado='$this->id_Empleado'";
         
         //print($query);
         //EJECUTA  FUNCION PARA ACTUALIZAR

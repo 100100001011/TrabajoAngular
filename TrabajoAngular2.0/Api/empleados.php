@@ -45,18 +45,8 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 }else if ($_SERVER['REQUEST_METHOD'] == 'PUT'){
     $datosRecibidosJSON = file_get_contents("php://input");
     $datosArray = $obj_empleados->PUT($datosRecibidosJSON);
-    header('Content-Type: application/json');
-    if(isset($datosArray["result"]["error_id"])){
-        $respuestaCodigo = $datosArray["result"]["error_id"];
-        http_response_code($respuestaCodigo);
-    }else{
-        http_response_code(200);
-    }
-    echo json_encode($datosArray);
+   
+    //echo json_encode($datosArray);
+    print_r($datosArray);
 
 }
-
-
-
-
-?>
