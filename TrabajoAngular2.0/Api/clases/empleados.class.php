@@ -125,7 +125,7 @@ class empleados extends conexion
         $datosArr = json_decode($json, true);
 
         if ( !isset($datosArr['id_Empleado']) || !isset($datosArr['Nombre']) ) {
-            //echo "error";
+
             return $obj_respuestas->error_400();
         } else {
             $this->id_Empleado = $datosArr['id_Empleado'];
@@ -189,10 +189,45 @@ class empleados extends conexion
         Email='$this->Email',Observaciones_1='$this->Observaciones_1',Foto='$this->Foto',Fecha_ingreso='$this->Fecha_ingreso',Cargo='$this->Cargo',Departamente='$this->Departamente',Provincia_2='$this->Provincia_2',
         Sueldo='$this->Sueldo',Jornada='$this->Jornada',Observaciones_2='$this->Observaciones_2' WHERE id_Empleado='$this->id_Empleado'";
         
-        //print($query);
-        //EJECUTA  FUNCION PARA ACTUALIZAR
         $resp = parent::noQuery($query);
-        //echo $resp;
+
+        if($resp >= 1){
+            return $resp;
+        }else{
+            return 0;
+        }
+        
+    }
+
+    public function DELETE($json){
+
+        $obj_respuestas = new respuestas();
+        $datosArr = json_decode($json,true);
+ 
+        if(!isset($datosArr['id_Empleado'])){
+            return $obj_respuestas->error_400();
+        }else{
+            $this->id_Empleado = $datosArr['id_Empleado'];
+
+            $resultado = $this->EliminarDatos();
+
+            
+            if($resultado){
+                $respuesta = $obj_respuestas->response;
+                $respuesta["result"] = array("id_Empleado"=>$this->id_Empleado);
+                return $respuesta;
+            }else{
+                return $obj_respuestas->error_500();
+            }
+            
+        }
+    }
+
+    private function EliminarDatos(){
+        $query = "DELETE FROM $this->table WHERE id_Empleado = '$this->id_Empleado'";
+
+        $resp = parent::noQuery($query);
+
         if($resp >= 1){
             return $resp;
         }else{

@@ -46,7 +46,19 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
     $datosRecibidosJSON = file_get_contents("php://input");
     $datosArray = $obj_empleados->PUT($datosRecibidosJSON);
    
-    //echo json_encode($datosArray);
-    print_r($datosArray);
+    echo json_encode($datosArray);
 
+}else if ($_SERVER['REQUEST_METHOD'] == 'DELETE'){
+    $datosRecibidosJSON = file_get_contents("php://input");
+    $datosArray = $obj_empleados->DELETE($datosRecibidosJSON);
+    header('Content-Type: application/json');
+    //==> ERRORES
+    if(isset($datosArray["result"]["error_id"])){
+        $respuestaCodigo = $datosArray["result"]["error_id"];
+        http_response_code($respuestaCodigo);
+    }else{
+        http_response_code(200);
+    }
+    //<== ERRORES
+    echo json_encode($datosArray);
 }
