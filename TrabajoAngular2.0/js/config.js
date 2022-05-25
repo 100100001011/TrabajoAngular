@@ -5,9 +5,10 @@ app.config( function($routeProvider){
 			templateUrl: 'parciales/home.html',
 			controller: 'inicioCtrl'
 		})
-		.when('/profesores',{
-			templateUrl: 'parciales/profesores.html',
-			controller: 'profesoresCtrl'
+		//ENVIO DE PARAMETROS DESDE UNA PAGINA A OTRA PARA EDITAR
+		.when('/alumnosEditar/:Rcodigo',{
+			templateUrl: 'parciales/alumnosEditar.html',
+			controller: 'alumnosEditar'
 		})
 		.otherwise({
 			redirectTo: '/'

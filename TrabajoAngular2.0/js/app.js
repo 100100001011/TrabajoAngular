@@ -1,25 +1,29 @@
-var app = angular.module("universidadApp", ["ngRoute"]);
+(function () {
+  var app = angular.module("TrabajoApp", []);
 
-app.controller("mainCtrl", [
-  "$scope",
-  "$http",
-  function ($scope, $http) {
-    $scope.menuSuperior = "parciales/menu.html";
+  app.controller("indexControl", [
+    "$scope",
+    "$http",
+    function ($scope, $http) {
+      
+      $scope.arrEmpleados = {};
+     
+      $scope.numero = 1;
 
-    $scope.setActive = function (Opcion) {
-      $scope.mInicio = "";
-      $scope.mProfesores = "";
-      $scope.mAlumnos = "";
+      
 
-      $scope[Opcion] = "active";
-    };
-  },
-]);
+      $http({
+        method: "GET",
+        url: "Api/empleados.php?page=" + $scope.numero,
+      }).then(function (response) {
+        if (response.data.err !== undefined) {
+          window.location = "#/alumnos";
+          return;
+        }
+        $scope.arrEmpleados = response.data;
+      });
 
-//app.filter se crean filtros
-//Filtro personalizado de telefono
-app.filter('Filtro_telefono',function(){
-	return function(numero){
-		return numero.substring(0,4) + "-" + numero.substring(4);
-	};
-});
+      
+    },
+  ]);
+})();
