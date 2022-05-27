@@ -50,10 +50,22 @@ class conexion{
     public function get_datos($sql_query){
         $res = $this->cnx->query($sql_query);
         $ResArr = array();
-        foreach ($res as $i){
-            //GUARDA LA INFO EN EL ARRAY
-            $ResArr[] = $i;
+        //var_dump($res);
+        if($res->num_rows > 1){
+            foreach ($res as $i){
+                //GUARDA LA INFO EN EL ARRAY
+                $ResArr[] = $i;
+                //var_dump($i);
+            }
+        }else{
+            foreach ($res as $i){
+                //GUARDA LA INFO EN EL ARRAY
+                $ResArr = $i;
+                
+            }
         }
+        
+        
         return $this->utf8($ResArr);
     }
 

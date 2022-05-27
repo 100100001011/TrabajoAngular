@@ -5,10 +5,12 @@ app.controller("EditarEmpleados", [
     "$http",
     function ($scope, $routeParams, $http) {
       $scope.prueba = "prueba";
-      $scope.arrayAlumnos = {};
+      $scope.arrayEmpleado = {};
       $scope.numero = $routeParams.id;
       $scope.actualiado = false;
+      $scope.fecha_1 = "";
   
+      //CONEXION CON LA API
       $http({
         method: "GET",
         url: "Api/empleados.php?id=" + $scope.numero,
@@ -17,7 +19,8 @@ app.controller("EditarEmpleados", [
           window.location = "#/alumnos";
           return;
         }
-        $scope.arrayAlumnos = response.data;
+        response.data.Fecha_ingreso = response.data.Fecha_ingreso;
+        $scope.arrayEmpleado = response.data;
       });
   
       
