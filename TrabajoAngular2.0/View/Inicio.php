@@ -10,11 +10,11 @@
 
                     <label>Nombre</label>
 
-                    <input type="text" class="form-control" ng-model="search.Nombre" placeholder="Buscar Nombre ">
+                    <input type="text" class="form-control" ng-model="nombre_search" placeholder="Buscar Nombre ">
                 </div>
                 <div class="form-group col-md-4">
                     <label>Cedula</label>
-                    <input type="text" class="form-control" ng-model="search.Cedula" placeholder="Buscar C.I">
+                    <input type="text" class="form-control" ng-model="cedula_search" placeholder="Buscar C.I">
                 </div>
 
             </div>
@@ -27,7 +27,7 @@
                             <th class="text-center">Cargo</th>
                         </tr>
 
-                        <tr ng-repeat="i in arrEmpleados | filter:search">
+                        <tr ng-repeat="i in arrEmpleados | filter:{Nombre:nombre_search,Cedula:cedula_search}">
                         
                             <td class="text-rigth">{{i.Nombre}}</td>
                             <td class="text-rigth">{{i.Cedula}}</td>
