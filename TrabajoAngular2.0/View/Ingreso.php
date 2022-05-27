@@ -8,12 +8,12 @@
             </div>
 
             <ul class="nav nav-tabs" role="tablist">
-                <li class="nav-item"">
+                <li class="nav-item">
                     
-                    <a data-toggle=" tab" href="" data-target="#D_Personales">Datos Personales </a>
+                    <a data-toggle="tab" href="" data-target="#D_Personales">Datos Personales </a>
                 </li>
                 <li>
-                    <a data-toggle="tab" href="" data-target="#D_Laborables">Datos Personales </a>
+                    <a data-toggle="tab" href="" data-target="#D_Laborables">Datos Laborables</a>
 
                 </li>
             </ul>

@@ -11,7 +11,7 @@ app.config(function($routeProvider){
 		})
 		.when('/Editar/:id',{
 			templateUrl: 'View/Editar.php',
-			
+			controller: 'EditarEmpleados'
 		})
 		.when('/Reporte',{
 			templateUrl: 'View/Reporte.php',

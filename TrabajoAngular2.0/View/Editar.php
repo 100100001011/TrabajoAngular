@@ -1,3 +1,6 @@
+{{prueba}}
+{{arrayAlumnos | json}}
+{{numero}}
 <!-- FORMULARIO EMPLEADO =====> -->
 <section id='2'>
     <div class="container">
@@ -6,9 +9,9 @@
                 <h4 align="center">Actualizar Datos</h4>
             </div>
             <ul class="nav nav-tabs" role="tablist">
-                <li class="nav-item"">
-                    
-                    <a data-toggle=" tab" href="" data-target="#D_Personales">Datos Personales </a>
+                <li class="nav-item">
+
+                    <a data-toggle="tab" href="" data-target="#D_Personales">Datos Personales </a>
                 </li>
                 <li>
                     <a data-toggle="tab" href="" data-target="#D_Laborables">Datos Personales </a>

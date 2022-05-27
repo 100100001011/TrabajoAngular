@@ -26,6 +26,7 @@
     <script src="js/app.js"></script>
     <script src="js/config.js"></script>
     <!--CONTROLADORES-->
+    <script src="js/editarControl.js"></script>
     <!-- ANGULARJS -->
 
     <title>Empleados</title>
