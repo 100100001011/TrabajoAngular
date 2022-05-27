@@ -117,7 +117,7 @@
                 </form>
             </div>
             <div class="divbotones">
-                <button id="btSalir" type="button" class="btn btn-danger">Salir</button>
+                <button id="btSalir2" type="button" class="btn btn-danger"><a href="#!/">Salir</a></button>
             </div>
         </div>
     </section>

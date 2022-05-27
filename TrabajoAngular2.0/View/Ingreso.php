@@ -1,56 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-
-    <!-- BOOTSTARP -->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ingreso de Datos</title>
-
-    <style>
-        .file {
-            visibility: hidden;
-            position: absolute;
-        }
-
-        textarea {
-            resize: none;
-        }
-
-        .divbotones {
-            
-            margin: 1rem;
-            padding: 1rem;
-            
-            /* IMPORTANTE */
-            text-align: center;
-        }
-    </style>
-</head>
-
-<body>
-
-
     <div class="container">
 
 
         <div role="tabpanel">
 
             <div class="card-header">
-            <h4 align="center" >Ingreso de Datos</h4>
+                <h4 align="center">Ingreso de Datos</h4>
             </div>
 
             <ul class="nav nav-tabs" role="tablist">
@@ -200,7 +154,7 @@
         </div>
 
         <div class="divbotones">
-            
+
             <button id="btReporte" type="button" class="btn btn-warning">Reporte</button>
             <button id="btSalir" type="button" class="btn btn-danger">Salir</button>
         </div>
@@ -208,19 +162,15 @@
     </div>
 
 
-
-
-
-
     <script>
         //=======>JQUERY
-        
+
         $('#btReporte').click(function(e) {
-            $(location).attr('href', './Reporte.php');
+            $(location).attr('href', '#!/Reporte');
         });
-        
+
         $('#btSalir').click(function(e) {
-            $(location).attr('href', '../index.php');
+            $(location).attr('href', '#!/');
         });
 
 
@@ -245,75 +195,4 @@
             };
             reader.readAsDataURL(this.files[0]);
         });
-
-        //<=========
-
-
-        function insert() {
-            var datos = new FormData();
-            datos.append('nombres', $('#inp_nombres').val());
-            datos.append('apellidos', $('#inp_apellidos').val());
-            datos.append('cedula', $('#inp_cedula').val());
-            datos.append('provincia', $('#inp_provincia1').val());
-            datos.append('fec_na', $('#inp_fecha').val());
-            datos.append('email', $('#inp_email').val());
-            datos.append('observaciones1', $('#inp_observacion1').val());
-            datos.append('foto', $('#file_image').val());
-            datos.append('fec_ingre', $('#inp_fechaingreso').val());
-            datos.append('cargo', $('#inp_cargo').val());
-            datos.append('departamento', $('#inp_departamento').val());
-            datos.append('provincia2', $('#inp_provincia2').val());
-            datos.append('sueldo', $('#inp_sueldo').val());
-            datos.append('jornada', $('input:radio[name=jornada]:checked').val());
-            datos.append('observaciones2', $('#inp_obser').val());
-
-
-            $.ajax({
-                type: "post",
-                url: "../Controller/Insertar.php?accion=insertar",
-                data: datos,
-                processData: false,
-                contentType: false,
-                success: function(respuesta) {
-                    //alert(respuesta);
-                    if (respuesta === 'OK') {
-                        alert("DATOS INGRESADOS");
-                        $('#F_Ingreso')[0].reset();
-                        location.reload();
-                    } else {
-                        alert("DATOS NO INGRESADOS");
-                    }
-
-
-
-                }
-            });
-
-        }
-
-        function provincia() {
-            $.getJSON("../Controller/Provincias.php?accion=provincia", function(registro) {
-                var array = [];
-                $.each(registro, function(llave, valor) {
-
-                    if (llave >= 0) {
-                        console.log(valor.inp_provincia1);
-                        var select = "<option value=' " + valor.nombre_provincia + "'>" + valor.nombre_provincia + "</option>";
-                        array.push(select);
-                    }
-                    //alert(array);
-                });
-                //inserta los datos en la tabla
-                $("#inp_provincia1").append(array.join(""));
-                $("#inp_provincia2").append(array.join(""));
-
-
-            })
-        }
-
-      
     </script>
-
-</body>
-
-</html>

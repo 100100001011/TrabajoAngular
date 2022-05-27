@@ -1,4 +1,4 @@
-<section id="1">
+        {{arrEmpleados | json}}
         <div class="container">
             <div class="form-group col-md-12">
                 <div class="card-header">
@@ -16,7 +16,7 @@
                     <label>Cedula</label>
                     <input type="text" class="form-control" ng-model="search.Cedula" placeholder="Buscar C.I">
                 </div>
-                
+
             </div>
             <div class="card-body">
                 <div class="form-group col-md-12">
@@ -28,9 +28,11 @@
                         </tr>
 
                         <tr ng-repeat="i in arrEmpleados | filter:search">
-                            <td class="text-center">{{i.Nombre}}</td>
-                            <td class="text-center">{{i.Cedula}}</td>
-                            <td class="text-center">{{i.Cargo}}</td>
+                        
+                            <td class="text-rigth">{{i.Nombre}}</td>
+                            <td class="text-rigth">{{i.Cedula}}</td>
+                            <td class="text-rigth">{{i.Cargo}}</td>
+                            <td class="text-rigth"><a href="#!/Editar/{{i.id_Empleado}}">Editar</a></td>
                         </tr>
                     </table>
                 </div>
@@ -39,5 +41,11 @@
                     <button id="btReporte" type="button" class="btn btn-warning">Reporte</button>
                 </div>
             </div>
-    </section>
-    <!-- <====================== -->
+            <script>
+                $('#btInsertar').click(function(e) {
+                    $(location).attr('href', '#!/Ingreso');
+                });
+                $('#btReporte').click(function(e) {
+                    $(location).attr('href', '#!/Reporte');
+                });
+            </script>
