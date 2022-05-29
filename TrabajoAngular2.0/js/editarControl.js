@@ -20,6 +20,8 @@ app.controller("EditarEmpleados", [
           return;
         }
         response.data.Fecha_ingreso = response.data.Fecha_ingreso;
+        
+        
         $scope.arrayEmpleado = response.data;
       });
   

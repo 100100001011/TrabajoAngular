@@ -48,6 +48,7 @@ class conexion{
 
     //GET
     public function get_datos($sql_query){
+        
         $res = $this->cnx->query($sql_query);
         $ResArr = array();
         //var_dump($res);
@@ -67,6 +68,17 @@ class conexion{
         
         
         return $this->utf8($ResArr);
+        
+        /*
+        $res = $this->cnx->query($sql_query);
+        var_dump($res->num_rows);
+        $ResArr = array();
+        foreach ($res as $i){
+            //GUARDA LA INFO EN EL ARRAY
+            $ResArr[] = $i;
+        }
+        return $this->utf8($ResArr);
+        */
     }
 
     //PUT-DELETE
