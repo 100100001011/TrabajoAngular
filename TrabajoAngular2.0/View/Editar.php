@@ -28,7 +28,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label>Nombres</label>
-                                    <input type="text" class="form-control" ng-model="arrayEmpleado.Nombre" ng-model="arrayEmpleado[0].Nombre" id="inp_nombres" placeholder="Nombres" maxlength="50" required>
+                                    <input type="text" class="form-control" ng-model="arrayEmpleado.Nombre" id="inp_nombres" placeholder="Nombres" maxlength="50" required>
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
                                 <div class="form-group col-md-6">
