@@ -19,11 +19,34 @@ app.controller("EditarEmpleados", [
           window.location = "#/alumnos";
           return;
         }
+
+        console.log(response.data.Fecha_ingreso);
         response.data.Fecha_ingreso = response.data.Fecha_ingreso;
         
         
         $scope.arrayEmpleado = response.data;
       });
+
+      
+      $scope.Guardar = function () {
+        
+        console.log($scope.arrayEmpleado);
+        $http({
+          method: "PUT",
+          url: "Api/empleados.php",
+          data: $scope.arrayEmpleado , 
+        }).then(function (res) {
+          
+          alert(res);
+          //if(res.data.err === false){
+          //  $scope.actualiado = true;
+          //}
+  
+          console.log(res.data);
+          console.log(res.data.status);
+          //alert(res.data);
+        });
+      };
   
       
   

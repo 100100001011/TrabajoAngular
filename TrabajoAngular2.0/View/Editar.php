@@ -19,7 +19,7 @@
 
                 </li>
             </ul>
-            <form id="F_Actualizar" action="javascript:Actualizar();" method="post" class="was-validated">
+            <form ng-submit="Guardar()" class="was-validated">
                 <div class="card-body">
                     <div class="tab-content">
                         <!--Etiqueta-->
@@ -48,7 +48,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label>Fecha de nacimientos</label>
-                                    <input type="date" class="form-control" ng-model="arrayEmpleado.Fecha_Nacimiento" id="inp_fecha" placeholder="aaaa-mm-dd" required>
+                                    <input type="date" class="form-control"  id="inp_fecha" placeholder="aaaa-mm-dd" required>
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
                                 <div class="form-group col-md-6">
@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label>Fotografia</label>
-                                    <input type="file" name="img[]" class="file" accept="image/*" id="file_image">
+                                    <input type="file" class="file" accept="image/*" id="file_image">
                                     <div>
                                         <img src="" width="100" height="100" id="prevista" class="img-circle">
                                         <button type="button" class="browse btn btn-primary">Cargar Imagen</button>
@@ -75,7 +75,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label>Fecha de ingreso</label>{{arrayEmpleado.Fecha_ingreso}}
-                                    <input type="date" class="form-control" ng-model="arrayEmpleado.Fecha_ingreso" id="inp_fechaingreso" placeholder="aaaa-mm-dd" required>
+                                    <input type="date" class="form-control"  id="inp_fechaingreso" placeholder="aaaa-mm-dd" required>
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
                                 <div class="form-group col-md-6">
@@ -95,7 +95,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label>Sueldo:</label>{{arrayEmpleado.Sueldo}}
-                                    <input type="number" step="any" class="form-control" ng-model="arrayEmpleado.Sueldo" id="inp_sueldo" placeholder="USD" maxlength="10" required>
+                                    <input type="number" step="any" class="form-control"  id="inp_sueldo" placeholder="USD" maxlength="10" required>
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
                                 <div class="form-group col-md-6">
