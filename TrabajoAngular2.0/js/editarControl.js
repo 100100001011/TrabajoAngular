@@ -8,7 +8,7 @@ app.controller("EditarEmpleados", [
       $scope.arrayEmpleado = {};
       $scope.numero = $routeParams.id;
       $scope.actualiado = false;
-      $scope.fecha_1 = "";
+      
   
       //CONEXION CON LA API
       $http({
@@ -21,7 +21,9 @@ app.controller("EditarEmpleados", [
         }
 
         console.log(response.data.Fecha_ingreso);
-        response.data.Fecha_ingreso = response.data.Fecha_ingreso;
+        
+        
+        //response.data.Fecha_ingreso = "hola";
         
         
         $scope.arrayEmpleado = response.data;
@@ -37,7 +39,6 @@ app.controller("EditarEmpleados", [
           data: $scope.arrayEmpleado , 
         }).then(function (res) {
           
-          alert(res);
           //if(res.data.err === false){
           //  $scope.actualiado = true;
           //}

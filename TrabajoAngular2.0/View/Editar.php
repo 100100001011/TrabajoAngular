@@ -1,7 +1,4 @@
-{{prueba}}
-{{arrayEmpleado | json}}
-{{numero}}
-{{fecha_1}}
+
 <!-- FORMULARIO EMPLEADO =====> -->
 <section id='2'>
     <div class="container">
@@ -75,7 +72,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label>Fecha de ingreso</label>{{arrayEmpleado.Fecha_ingreso}}
-                                    <input type="date" class="form-control"  id="inp_fechaingreso" placeholder="aaaa-mm-dd" required>
+                                    <input type="text" class="form-control"  data-ng-model="arrayEmpleado.Fecha_ingreso"id="inp_fechaingreso" placeholder="aaaa-mm-dd" required>
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
                                 <div class="form-group col-md-6">

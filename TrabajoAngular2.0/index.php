@@ -22,6 +22,7 @@
     <!-- Librerias -->
     <script src="js/lib/angular.min.js"></script>
     <script src="js/lib/angular-route.min.js"></script>
+    <script src="js/lib/moment.min.js"></script>
     <!-- Principal y confing -->
     <script src="js/app.js"></script>
     <script src="js/config.js"></script>
