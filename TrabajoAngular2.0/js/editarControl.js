@@ -8,6 +8,8 @@ app.controller("EditarEmpleados", [
       $scope.arrayEmpleado = {};
       $scope.numero = $routeParams.id;
       $scope.actualiado = false;
+      var f = "2022-02-13";
+      $scope.fecha = new Date(f);
       
   
       //CONEXION CON LA API
