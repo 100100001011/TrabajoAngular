@@ -44,8 +44,8 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label>Fecha de nacimientos</label>
-                                    <input type="date" class="form-control"  id="inp_fecha" placeholder="aaaa-mm-dd" required>
+                                    <label>Fecha de nacimientos</label>{{arrayEmpleado.Fecha_Nacimiento}}
+                                    <input type="date" class="form-control"  ng-model="arrayEmpleado.Fecha_Nacimiento" id="inp_fecha" placeholder="aaaa-mm-dd" required>
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
                                 <div class="form-group col-md-6">
@@ -72,7 +72,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label>Fecha de ingreso</label>{{arrayEmpleado.Fecha_ingreso}}
-                                    <input type="date" class="form-control"  data-ng-model="fecha"id="inp_fechaingreso" placeholder="aaaa-mm-dd" required>
+                                    <input type="date" class="form-control"  ng-model="arrayEmpleado.Fecha_ingreso"id="inp_fechaingreso" placeholder="aaaa-mm-dd" required>
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
                                 <div class="form-group col-md-6">
@@ -81,7 +81,7 @@
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label>Departamento:</label>
+                                    <label>Departamento:</label>{{arrayEmpleado.Departamente}}
                                     <input type="text" class="form-control" ng-model="arrayEmpleado.Departamente" id="inp_departamento" placeholder="Departamento" maxlength="20" required>
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
@@ -92,7 +92,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label>Sueldo:</label>{{arrayEmpleado.Sueldo}}
-                                    <input type="number" step="any" class="form-control"  id="inp_sueldo" placeholder="USD" maxlength="10" required>
+                                    <input type="number" step="any" class="form-control" string-to-number ng-model="arrayEmpleado.Sueldo" id="inp_sueldo" placeholder="USD" maxlength="10" required>
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
                                 <div class="form-group col-md-6">

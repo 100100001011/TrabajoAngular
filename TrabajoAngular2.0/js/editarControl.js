@@ -8,8 +8,7 @@ app.controller("EditarEmpleados", [
       $scope.arrayEmpleado = {};
       $scope.numero = $routeParams.id;
       $scope.actualiado = false;
-      var f = "2022-02-13";
-      $scope.fecha = new Date(f);
+     
       
   
       //CONEXION CON LA API
@@ -21,20 +20,17 @@ app.controller("EditarEmpleados", [
           window.location = "#/alumnos";
           return;
         }
-
-        console.log(response.data.Fecha_ingreso);
-        
-        
-        //response.data.Fecha_ingreso = "hola";
-        
-        
+        //Formatos
+        response.data.Sueldo = parseFloat(response.data.Sueldo);
+        response.data.Fecha_Nacimiento = Formato_Fecha(response.data.Fecha_Nacimiento);
+        response.data.Fecha_ingreso = Formato_Fecha(response.data.Fecha_ingreso); 
+        //
         $scope.arrayEmpleado = response.data;
       });
 
       
       $scope.Guardar = function () {
-        
-        console.log($scope.arrayEmpleado);
+        $scope.Fecha();
         $http({
           method: "PUT",
           url: "Api/empleados.php",
@@ -50,9 +46,26 @@ app.controller("EditarEmpleados", [
           //alert(res.data);
         });
       };
+
+      $scope.Fecha = function (){
+        var fecha_modificada = $scope.arrayEmpleado.Fecha_Nacimiento.toISOString().split('T')[0];
+        //fecha_modificada.toISOString().split('T')[0];
+        alert(fecha_modificada);
+        //var fecha_modificada = new Date(fecha);
+        return fecha_modificada;
+      }
   
       
   
     },
   ]);
+  
+
+  function Formato_Fecha(fecha){
+    //fecha.replace('-','/');
+    //console.log(fecha.replaceAll('-','/'));
+    var fecha_modificada = new Date(fecha.replaceAll('-',','));
+    return fecha_modificada;
+  }
+
   
