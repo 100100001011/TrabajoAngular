@@ -50,16 +50,19 @@ app.controller("EditarEmpleados", [
         //if(res.data.err === false){
         //  $scope.actualiado = true;
         //}
-        if(res.data.status = 'ok'){
+        console.log(res);
+        console.log(res.data.status);
+        console.log(res.data.result);
+        if(res.data.status == 'ok'){
           alert("ACTUALIZADO OK");
-          window.location = "#/";
-          return;
+          
+          //window.location = "#/";
+          //return;
         }else{
           alert("NO SE PUDO ACTUALIZAR");
         }
         
-        console.log(res.data.status);
-        console.log(res.data.result);
+        
         //alert(res.data);
       });
     };

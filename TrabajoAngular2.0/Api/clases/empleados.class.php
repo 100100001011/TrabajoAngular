@@ -32,7 +32,7 @@ class empleados extends conexion
             $fin = $fin * $pagina;
         }
 
-        $query = "SELECT id_Empleado,Nombre,Apellido,Cedula,Cargo FROM $this->table limit $inicio , $fin";
+        $query = "SELECT * FROM $this->table limit $inicio , $fin";
         $datos = parent::get_datos($query);
         return $datos;
     }
@@ -173,7 +173,7 @@ class empleados extends conexion
                 $this->Observaciones_2 = $datosArr['Observaciones_2'];
             }
             $resultado = $this->actualizarDatos();
-            var_dump($resultado);
+            //var_dump($resultado);
             //if ($resultado) {
             if ($resultado >= 1) {
                 $respuesta = $obj_respuestas->response;

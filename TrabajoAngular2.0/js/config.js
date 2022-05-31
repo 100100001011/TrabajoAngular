@@ -15,7 +15,7 @@ app.config(function($routeProvider){
 		})
 		.when('/Reporte',{
 			templateUrl: 'View/Reporte.php',
-			
+			controller: 'ReporteEmpleados'
 		})
 		.otherwise({
 			redirectTo: '/'

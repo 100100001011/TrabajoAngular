@@ -92,9 +92,15 @@
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label>Provincia</label>
-                                    <select class="form-control" ng-model="arrayEmpleado.Provincia_2" id="inp_provincia2">
+
+                                    <label>Provincia</label>{{arrayEmpleado.Provincia_2}}
+                                    <select class="form-control" ng-model="arrayEmpleado.Provincia_2" id="inp_provincia1">
+                                        <option value="0" label="Please Select"></option>
+                                        <option ng-repeat="i in arrayProvincias" value="{{i.provincia}}">
+                                            {{i.provincia}}
+                                        </option>
                                     </select>
+                                    
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label>Sueldo:</label>{{arrayEmpleado.Sueldo}}

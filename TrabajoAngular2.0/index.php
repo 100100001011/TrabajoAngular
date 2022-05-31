@@ -22,12 +22,12 @@
     <!-- Librerias -->
     <script src="js/lib/angular.min.js"></script>
     <script src="js/lib/angular-route.min.js"></script>
-    <script src="js/lib/moment.min.js"></script>
     <!-- Principal y confing -->
     <script src="js/app.js"></script>
     <script src="js/config.js"></script>
     <!--CONTROLADORES-->
     <script src="js/editarControl.js"></script>
+    <script src="js/reporteControl.js"></script>
     <!-- ANGULARJS -->
 
     <title>Empleados</title>
