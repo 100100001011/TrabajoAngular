@@ -57,26 +57,26 @@ class empleados extends conexion
             if (isset($datosArr['Provincia1'])) {
                 $this->Provincia_1 = $datosArr['Provincia1'];
             }
-            if (isset($datosArr['FechaNacimiento'])) {
-                $this->Fecha_Nacimiento = $datosArr['FechaNacimiento'];
+            if (isset($datosArr['Fecha_Nacimiento'])) {
+                $this->Fecha_Nacimiento = $datosArr['Fecha_Nacimiento'];
             }
             if (isset($datosArr['Email'])) {
                 $this->Email = $datosArr['Email'];
             }
-            if (isset($datosArr['Observaciones1'])) {
-                $this->Observaciones_1 = $datosArr['Observaciones1'];
+            if (isset($datosArr['Observaciones_1'])) {
+                $this->Observaciones_1 = $datosArr['Observaciones_1'];
             }
             if (isset($datosArr['Foto'])) {
                 $this->Foto = $datosArr['Foto'];
             }
-            if (isset($datosArr['Fechaingreso'])) {
-                $this->Fecha_ingreso = $datosArr['Fechaingreso'];
+            if (isset($datosArr['Fecha_ingreso'])) {
+                $this->Fecha_ingreso = $datosArr['Fecha_ingreso'];
             }
             if (isset($datosArr['Cargo'])) {
                 $this->Cargo = $datosArr['Cargo'];
             }
             if (isset($datosArr['Departamente'])) {
-                $this->Departamento = $datosArr['Departamente'];
+                $this->Departamente = $datosArr['Departamente'];
             }
             if (isset($datosArr['Provincia2'])) {
                 $this->Provincia_2 = $datosArr['Provincia2'];
@@ -87,8 +87,8 @@ class empleados extends conexion
             if (isset($datosArr['Jornada'])) {
                 $this->Jornada = $datosArr['Jornada'];
             }
-            if (isset($datosArr['Observaciones2'])) {
-                $this->Observaciones_2 = $datosArr['Observaciones2'];
+            if (isset($datosArr['Observaciones_2'])) {
+                $this->Observaciones_2 = $datosArr['Observaciones_2'];
             }
 
             $resultado = $this->insertarDatos();
@@ -139,26 +139,26 @@ class empleados extends conexion
             if (isset($datosArr['Provincia1'])) {
                 $this->Provincia_1 = $datosArr['Provincia1'];
             }
-            if (isset($datosArr['FechaNacimiento'])) {
-                $this->Fecha_Nacimiento = $datosArr['FechaNacimiento'];
+            if (isset($datosArr['Fecha_Nacimiento'])) {
+                $this->Fecha_Nacimiento = $datosArr['Fecha_Nacimiento'];
             }
             if (isset($datosArr['Email'])) {
                 $this->Email = $datosArr['Email'];
             }
-            if (isset($datosArr['Observaciones1'])) {
-                $this->Observaciones_1 = $datosArr['Observaciones1'];
+            if (isset($datosArr['Observaciones_1'])) {
+                $this->Observaciones_1 = $datosArr['Observaciones_1'];
             }
             if (isset($datosArr['Foto'])) {
                 $this->Foto = $datosArr['Foto'];
             }
-            if (isset($datosArr['Fechaingreso'])) {
-                $this->Fecha_ingreso = $datosArr['Fechaingreso'];
+            if (isset($datosArr['Fecha_ingreso'])) {
+                $this->Fecha_ingreso = $datosArr['Fecha_ingreso'];
             }
             if (isset($datosArr['Cargo'])) {
                 $this->Cargo = $datosArr['Cargo'];
             }
             if (isset($datosArr['Departamente'])) {
-                $this->Departamento = $datosArr['Departamente'];
+                $this->Departamente = $datosArr['Departamente'];
             }
             if (isset($datosArr['Provincia2'])) {
                 $this->Provincia_2 = $datosArr['Provincia2'];
@@ -169,12 +169,13 @@ class empleados extends conexion
             if (isset($datosArr['Jornada'])) {
                 $this->Jornada = $datosArr['Jornada'];
             }
-            if (isset($datosArr['Observaciones2'])) {
-                $this->Observaciones_2 = $datosArr['Observaciones2'];
+            if (isset($datosArr['Observaciones_2'])) {
+                $this->Observaciones_2 = $datosArr['Observaciones_2'];
             }
             $resultado = $this->actualizarDatos();
-
-            if ($resultado) {
+            //var_dump($resultado);
+            //if ($resultado) {
+            if ($resultado >= 1) {
                 $respuesta = $obj_respuestas->response;
                 $respuesta["result"] = array("id_Empleado" => $this->id_Empleado);
                 return $respuesta;
@@ -189,8 +190,8 @@ class empleados extends conexion
         Email='$this->Email',Observaciones_1='$this->Observaciones_1',Foto='$this->Foto',Fecha_ingreso='$this->Fecha_ingreso',Cargo='$this->Cargo',Departamente='$this->Departamente',Provincia_2='$this->Provincia_2',
         Sueldo='$this->Sueldo',Jornada='$this->Jornada',Observaciones_2='$this->Observaciones_2' WHERE id_Empleado='$this->id_Empleado'";
         
+        //var_dump($query);
         $resp = parent::noQuery($query);
-
         if($resp >= 1){
             return $resp;
         }else{
