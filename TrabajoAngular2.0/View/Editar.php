@@ -39,13 +39,19 @@
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label>Provincia</label>
+
+                                    <label>Provincia</label>{{arrayEmpleado.Provincia_1}}
                                     <select class="form-control" ng-model="arrayEmpleado.Provincia_1" id="inp_provincia1">
+                                        <option value="0" label="Please Select"></option>
+                                        <option ng-repeat="i in arrayProvincias" value="{{i.provincia}}">
+                                            {{i.provincia}}
+                                        </option>
                                     </select>
+                                    
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label>Fecha de nacimientos</label>{{arrayEmpleado.Fecha_Nacimiento}}
-                                    <input type="date" class="form-control"  ng-model="arrayEmpleado.Fecha_Nacimiento" id="inp_fecha" placeholder="aaaa-mm-dd" required>
+                                    <input type="date" class="form-control" ng-model="arrayEmpleado.Fecha_Nacimiento" id="inp_fecha" placeholder="aaaa-mm-dd" required>
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
                                 <div class="form-group col-md-6">
@@ -72,7 +78,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label>Fecha de ingreso</label>{{arrayEmpleado.Fecha_ingreso}}
-                                    <input type="date" class="form-control"  ng-model="arrayEmpleado.Fecha_ingreso"id="inp_fechaingreso" placeholder="aaaa-mm-dd" required>
+                                    <input type="date" class="form-control" ng-model="arrayEmpleado.Fecha_ingreso" id="inp_fechaingreso" placeholder="aaaa-mm-dd" required>
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
                                 <div class="form-group col-md-6">
@@ -96,17 +102,18 @@
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label>Jornada Parcial:</label>
+                                    <label>Jornada Parcial:</label>{{arrayEmpleado.Jornada}}
                                     <br>
                                     <div class="form-group row-md-4">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="jornadaS" id="rad_jornada1" value="S">
+                                            <input class="form-check-input" type="radio" name="jornadaS" ng-model="arrayEmpleado.Jornada" id="rad_jornada1" value="S">
                                             <label class="form-check-label">Si</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="jornadaN" id="rad_jornada2" value="N">
+                                            <input class="form-check-input" type="radio" name="jornadaN" ng-model="arrayEmpleado.Jornada" id="rad_jornada2" value="N">
                                             <label class="form-check-label">No</label>
                                         </div>
+
                                     </div>
                                 </div>
                                 <div class="form-group col-md-12">

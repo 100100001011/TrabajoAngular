@@ -32,7 +32,7 @@ class empleados extends conexion
             $fin = $fin * $pagina;
         }
 
-        $query = "SELECT * FROM $this->table limit $inicio , $fin";
+        $query = "SELECT id_Empleado,Nombre,Apellido,Cedula,Cargo FROM $this->table limit $inicio , $fin";
         $datos = parent::get_datos($query);
         return $datos;
     }
@@ -54,8 +54,8 @@ class empleados extends conexion
             $this->Nombre = $datosArr['Nombre'];
             $this->Apellido = $datosArr['Apellido'];
             $this->Cedula = $datosArr['Cedula'];
-            if (isset($datosArr['Provincia1'])) {
-                $this->Provincia_1 = $datosArr['Provincia1'];
+            if (isset($datosArr['Provincia_1'])) {
+                $this->Provincia_1 = $datosArr['Provincia_1'];
             }
             if (isset($datosArr['Fecha_Nacimiento'])) {
                 $this->Fecha_Nacimiento = $datosArr['Fecha_Nacimiento'];
@@ -78,8 +78,8 @@ class empleados extends conexion
             if (isset($datosArr['Departamente'])) {
                 $this->Departamente = $datosArr['Departamente'];
             }
-            if (isset($datosArr['Provincia2'])) {
-                $this->Provincia_2 = $datosArr['Provincia2'];
+            if (isset($datosArr['Provincia_2'])) {
+                $this->Provincia_2 = $datosArr['Provincia_2'];
             }
             if (isset($datosArr['Sueldo'])) {
                 $this->Sueldo = $datosArr['Sueldo'];
@@ -136,8 +136,8 @@ class empleados extends conexion
             if (isset($datosArr['Cedula'])) {
                 $this->Cedula = $datosArr['Cedula'];
             }
-            if (isset($datosArr['Provincia1'])) {
-                $this->Provincia_1 = $datosArr['Provincia1'];
+            if (isset($datosArr['Provincia_1'])) {
+                $this->Provincia_1 = $datosArr['Provincia_1'];
             }
             if (isset($datosArr['Fecha_Nacimiento'])) {
                 $this->Fecha_Nacimiento = $datosArr['Fecha_Nacimiento'];
@@ -160,8 +160,8 @@ class empleados extends conexion
             if (isset($datosArr['Departamente'])) {
                 $this->Departamente = $datosArr['Departamente'];
             }
-            if (isset($datosArr['Provincia2'])) {
-                $this->Provincia_2 = $datosArr['Provincia2'];
+            if (isset($datosArr['Provincia_2'])) {
+                $this->Provincia_2 = $datosArr['Provincia_2'];
             }
             if (isset($datosArr['Sueldo'])) {
                 $this->Sueldo = $datosArr['Sueldo'];
@@ -173,7 +173,7 @@ class empleados extends conexion
                 $this->Observaciones_2 = $datosArr['Observaciones_2'];
             }
             $resultado = $this->actualizarDatos();
-            //var_dump($resultado);
+            var_dump($resultado);
             //if ($resultado) {
             if ($resultado >= 1) {
                 $respuesta = $obj_respuestas->response;

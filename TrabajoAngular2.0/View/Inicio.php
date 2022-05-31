@@ -29,7 +29,7 @@
 
                         <tr ng-repeat="i in arrEmpleados | filter:{Nombre:nombre_search,Cedula:cedula_search}">
                         
-                            <td class="text-rigth">{{i.Nombre}}</td>
+                            <td class="text-rigth">{{i.Nombre}} {{i.Apellido}}</td>
                             <td class="text-rigth">{{i.Cedula}}</td>
                             <td class="text-rigth">{{i.Cargo}}</td>
                             <td class="text-rigth"><a href="#!/Editar/{{i.id_Empleado}}">Editar</a></td>

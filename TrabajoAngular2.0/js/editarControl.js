@@ -6,16 +6,17 @@ app.controller("EditarEmpleados", [
   function ($scope, $routeParams, $http) {
     $scope.prueba = "prueba";
     $scope.arrayEmpleado = {};
+    $scope.arrayProvincias = {};
     $scope.numero = $routeParams.id;
-    $scope.actualiado = false;
+    
 
-    //CONEXION CON LA API
+    //==>> CONSULTAR DATOS GET
     $http({
       method: "GET",
       url: "Api/empleados.php?id=" + $scope.numero,
     }).then(function (response) {
       if (response.data.err !== undefined) {
-        window.location = "#/alumnos";
+        window.location = "#/inicio";
         return;
       }
       //Formatos
@@ -25,11 +26,22 @@ app.controller("EditarEmpleados", [
       //
       $scope.arrayEmpleado = response.data;
     });
+    //<<==
 
+    //==>> JSON
+    $http({
+      method: "POST",
+      url: "Json/Provincias.json",
+    }).then(function (response) {
+      //console.log(response.data);
+      $scope.arrayProvincias = response.data;
+    });
+    //<<==
+
+    //==>> GUARDAR DATOS
     $scope.Guardar = function () {
       //$scope.arrayEmpleado.Fecha_Nacimiento = $scope.arrayEmpleado.Fecha_Nacimiento.toISOString().split("T")[0];
       //$scope.arrayEmpleado.Fecha_ingreso = $scope.arrayEmpleado.Fecha_ingreso.toISOString().split("T")[0];
-      
       $http({
         method: "PUT",
         url: "Api/empleados.php",
@@ -39,29 +51,29 @@ app.controller("EditarEmpleados", [
         //  $scope.actualiado = true;
         //}
         if(res.data.status = 'ok'){
-          alert("ACTUALIZADO OK")
+          alert("ACTUALIZADO OK");
+          window.location = "#/";
+          return;
         }else{
           alert("NO SE PUDO ACTUALIZAR");
         }
-        console.log($scope.arrayEmpleado);
-        console.log(res.data);
+        
         console.log(res.data.status);
         console.log(res.data.result);
         //alert(res.data);
       });
     };
-
-    $scope.Fechas = function () {
-      $scope.arrayEmpleado.Fecha_Nacimiento = $scope.arrayEmpleado.Fecha_Nacimiento.toISOString().split("T")[0];
-      $scope.arrayEmpleado.Fecha_ingreso = $scope.arrayEmpleado.Fecha_ingreso.toISOString().split("T")[0];
-    };
-
+    //<<==
+    
+    //==>>FUNCION FORMATO FECHA
     $scope.Formato_Fecha = function (fecha) {
       //fecha.replace('-','/');
       //console.log(fecha.replaceAll('-','/'));
       var fecha_modificada = new Date(fecha.replaceAll("-", ","));
       return fecha_modificada;
     };
+    //<<==
+
   },
 ]);
 
