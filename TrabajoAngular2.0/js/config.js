@@ -7,7 +7,7 @@ app.config(function($routeProvider){
 		})
 		.when('/Ingreso',{
 			templateUrl: 'View/Ingreso.php',
-			
+			controller: 'InsertarEmpleados'
 		})
 		.when('/Editar/:id',{
 			templateUrl: 'View/Editar.php',

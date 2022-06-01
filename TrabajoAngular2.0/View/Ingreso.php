@@ -1,4 +1,6 @@
-    <div class="container">
+
+   {{Empleado.nombre}}
+   <div class="container">
 
 
         <div role="tabpanel">
@@ -9,7 +11,7 @@
 
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item">
-                    
+
                     <a data-toggle="tab" href="" data-target="#D_Personales">Datos Personales </a>
                 </li>
                 <li>
@@ -18,7 +20,7 @@
                 </li>
             </ul>
 
-            <form id="F_Ingreso" action="javascript:insert();" method="post" class="was-validated">
+            <form id="F_Ingreso" class="was-validated">
                 <div class="card-body">
                     <div class="tab-content">
 
@@ -30,12 +32,12 @@
 
                                 <div class="form-group col-md-6">
                                     <label>Nombres</label>
-                                    <input type="text" class="form-control" id="inp_nombres" placeholder="Nombres" maxlength="50" required>
+                                    <input type="text" class="form-control" ng-model="Empleado.nombre" id="inp_nombres" placeholder="Nombres" maxlength="50" required>
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label>Apellidos</label>
-                                    <input type="text" class="form-control" id="inp_apellidos" placeholder="Apellidos" maxlength="50" required>
+                                    <input type="text" class="form-control" ng-model="prueba"id="inp_apellidos" placeholder="Apellidos" maxlength="50" required>
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
 

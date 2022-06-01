@@ -28,6 +28,7 @@
     <!--CONTROLADORES-->
     <script src="js/editarControl.js"></script>
     <script src="js/reporteControl.js"></script>
+    <script src="js/insertarControl.js"></script>
     <!-- ANGULARJS -->
 
     <title>Empleados</title>
