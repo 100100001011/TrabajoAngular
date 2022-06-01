@@ -81,3 +81,17 @@ app.controller("EditarEmpleados", [
 ]);
 
 
+/*
+probar
+		$http.jsonp('http://api.openweathermap.org/data/2.5/weather?', { params: params })
+				        .then(function(data){
+								 $scope.clima = data.data;
+				         console.log(data.data);
+				        })
+				        .catch( function(error){
+				          console.warn( error );
+				        })
+ 
+}]);
+
+*/
