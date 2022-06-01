@@ -27,8 +27,8 @@
                             <th class="text-center">Cargo</th>
                         </tr>
 
-                        <tr ng-repeat="i in arrEmpleados | filter:{Nombre:nombre_search,Cedula:cedula_search}">
-                        
+                        <!--<tr ng-repeat="i in arrEmpleados | filter:{Nombre:nombre_search,Cedula:cedula_search}">-->
+                        <tr ng-repeat="i in arrEmpleados">
                             <td class="text-rigth">{{i.Nombre}} {{i.Apellido}}</td>
                             <td class="text-rigth">{{i.Cedula}}</td>
                             <td class="text-rigth">{{i.Cargo}}</td>

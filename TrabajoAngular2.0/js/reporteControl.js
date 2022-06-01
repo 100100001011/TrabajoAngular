@@ -5,10 +5,9 @@ app.controller("ReporteEmpleados", [
     function ($scope, $http) {
       $scope.pagina = 1;
       $scope.arrayEmpleado = {};
-      //$scope.propertyName = 'nombre';
-      //$scope.reverse = true;
+      $scope.ColumnaNombre = '';
+      $scope.reverse = false;
 
-      $scope.prueba = "";
         
       //==>> CONSULTAR DATOS GET
       $http({
@@ -23,9 +22,12 @@ app.controller("ReporteEmpleados", [
 
       });
       //<<==
-      $scope.Ordenar = function(propertyName) {
-        $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
-        $scope.propertyName = propertyName;
+      $scope.Ordenar = function(RColumnaNombre) {
+        $scope.reverse = ($scope.ColumnaNombre === RColumnaNombre) ? !$scope.reverse : true;
+        $scope.ColumnaNombre = RColumnaNombre;
+
+        console.log(RColumnaNombre);
+        console.log($scope.ColumnaNombre);
       };
    
   
