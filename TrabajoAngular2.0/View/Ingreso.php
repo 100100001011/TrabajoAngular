@@ -1,5 +1,4 @@
-
-   {{Empleado.nombre}}
+   {{arrayEmpleado | json}}
    <div class="container">
 
 
@@ -20,7 +19,7 @@
                 </li>
             </ul>
 
-            <form id="F_Ingreso" class="was-validated">
+            <form ng-submit="Insertar()" class="was-validated">
                 <div class="card-body">
                     <div class="tab-content">
 
@@ -32,18 +31,18 @@
 
                                 <div class="form-group col-md-6">
                                     <label>Nombres</label>
-                                    <input type="text" class="form-control" ng-model="Empleado.nombre" id="inp_nombres" placeholder="Nombres" maxlength="50" required>
+                                    <input type="text" class="form-control" ng-model="arrayEmpleado.Nombre" id="inp_nombres" placeholder="Nombres" maxlength="50" required>
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label>Apellidos</label>
-                                    <input type="text" class="form-control" ng-model="prueba"id="inp_apellidos" placeholder="Apellidos" maxlength="50" required>
+                                    <input type="text" class="form-control" ng-model="arrayEmpleado.Apellido" id="inp_apellidos" placeholder="Apellidos" maxlength="50" required>
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label>Cedula</label>
-                                    <input class="form-control" id="inp_cedula" placeholder="Cedula" maxlength="10" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" required>
+                                    <input class="form-control" ng-model="arrayEmpleado.Cedula" id="inp_cedula" placeholder="Cedula" maxlength="10" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" required>
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
 
@@ -56,19 +55,19 @@
 
                                 <div class="form-group col-md-6">
                                     <label>Fecha de nacimientos</label>
-                                    <input type="date" class="form-control" id="inp_fecha" placeholder="aaaa-mm-dd" required>
+                                    <input type="date" class="form-control" ng-model="arrayEmpleado.Fecha_Nacimiento" id="inp_fecha" placeholder="aaaa-mm-dd" required>
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label>Email</label>
-                                    <input type="email" class="form-control" id="inp_email" placeholder="Email" required maxlength="50">
+                                    <input type="email" class="form-control" ng-model="arrayEmpleado.Email" id="inp_email" placeholder="Email" required maxlength="50">
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label>Observaciones</label>
 
-                                    <textarea class="form-control" id="inp_observacion1" rows="3" placeholder="Observaciones" maxlength="100"></textarea>
+                                    <textarea class="form-control" ng-model="arrayEmpleado.Observaciones_1" id="inp_observacion1" rows="3" placeholder="Observaciones" maxlength="100"></textarea>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label>Fotografia</label>
@@ -95,18 +94,18 @@
 
                                 <div class="form-group col-md-6">
                                     <label>Fecha de ingreso</label>
-                                    <input type="date" class="form-control" id="inp_fechaingreso" placeholder="aaaa-mm-dd" required>
+                                    <input type="date" class="form-control" ng-model="arrayEmpleado.Fecha_ingreso" id="inp_fechaingreso" placeholder="aaaa-mm-dd" required>
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label>Cargo</label>
-                                    <input type="text" class="form-control" id="inp_cargo" placeholder="Cargo" maxlength="20" required>
+                                    <input type="text" class="form-control" ng-model="arrayEmpleado.Cargo" id="inp_cargo" placeholder="Cargo" maxlength="20" required>
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label>Departamento</label>
-                                    <input type="text" class="form-control" id="inp_departamento" placeholder="Departamento" maxlength="20" required>
+                                    <input type="text" class="form-control" ng-model="arrayEmpleado.Departamente" id="inp_departamento" placeholder="Departamento" maxlength="20" required>
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
 
@@ -119,7 +118,7 @@
 
                                 <div class="form-group col-md-6">
                                     <label>Sueldo</label>
-                                    <input type="number" step="any" class="form-control" id="inp_sueldo" placeholder="USD" maxlength="10" required>
+                                    <input type="number" step="any" class="form-control" ng-model="arrayEmpleado.Sueldo" id="inp_sueldo" placeholder="USD" maxlength="10" required>
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
 
@@ -142,7 +141,7 @@
                                 <div class="form-group col-md-12">
                                     <label for="inputAddress2">Observaciones</label>
 
-                                    <textarea class="form-control" id="inp_obser" rows="3" placeholder="Observaciones" maxlength="100"></textarea>
+                                    <textarea class="form-control" ng-model="arrayEmpleado.Observaciones_2" id="inp_obser" rows="3" placeholder="Observaciones" maxlength="100"></textarea>
                                 </div>
 
                             </div>
