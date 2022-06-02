@@ -37,7 +37,7 @@ app.controller("EditarEmpleados", [
       //console.log(response.data);
       $scope.arrayProvincias = response.data;
     });
-
+/*
     $http.jsonp('Json/Provincias.json', {})
 				        .then(function(data){
 								 $scope.arrayProvincias2 = data.data;
@@ -46,7 +46,7 @@ app.controller("EditarEmpleados", [
 				        .catch( function(error){
 				          console.warn( error );
 				        });
- 
+ */
 
     //<<==
 

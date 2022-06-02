@@ -42,7 +42,7 @@
 
                                     <label>Provincia</label>{{arrayEmpleado.Provincia_1}}
                                     <select class="form-control" ng-model="arrayEmpleado.Provincia_1" id="inp_provincia1">
-                                        <option value="0" label="Please Select"></option>
+                                        <option label="Please Select"></option>
                                         <option ng-repeat="i in arrayProvincias" value="{{i.provincia}}">
                                             {{i.provincia}}
                                         </option>
@@ -67,7 +67,7 @@
                                     <label>Fotografia</label>
                                     <input type="file" class="file" accept="image/*" id="file_image">
                                     <div>
-                                        <img src="" width="100" height="100" id="prevista" class="img-circle">
+                                        <img ng-src="{{arrayEmpleado.Foto}}" width="100" height="100" id="prevista" class="img-circle">
                                         <button type="button" class="browse btn btn-primary">Cargar Imagen</button>
                                     </div>
                                 </div>
@@ -95,7 +95,7 @@
 
                                     <label>Provincia</label>{{arrayEmpleado.Provincia_2}}
                                     <select class="form-control" ng-model="arrayEmpleado.Provincia_2" id="inp_provincia1">
-                                        <option value="0" label="Please Select"></option>
+                                        <option label="Please Select"></option>
                                         <option ng-repeat="i in arrayProvincias" value="{{i.provincia}}">
                                             {{i.provincia}}
                                         </option>

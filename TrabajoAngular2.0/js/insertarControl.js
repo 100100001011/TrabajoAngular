@@ -1,9 +1,10 @@
-
 app.controller("InsertarEmpleados", [
   "$scope",
   "$http",
   function ($scope, $http) {
-    
+    //Variables
+    $scope.arrayProvincias = {};
+    //Objeto
     $scope.arrayEmpleado = {
       Nombre: "",
       Apellido: "",
@@ -12,7 +13,7 @@ app.controller("InsertarEmpleados", [
       Fecha_Nacimiento: "",
       Email: "",
       Observaciones_1: "",
-      Foto: "",
+      Foto: "fotooss",
       Fecha_ingreso: "",
       Cargo: "",
       Departamente: "",
@@ -22,11 +23,19 @@ app.controller("InsertarEmpleados", [
       Observaciones_2: "",
     };
 
-     
-    console.log($scope.arrayEmpleado);
-    
-    $scope.Insertar = function () {
+    //==>> JSON
+    $http({
+      method: "POST",
+      url: "Json/Provincias.json",
+    }).then(function (response) {
+      //console.log(response.data);
+      $scope.arrayProvincias = response.data;
+    });
+    //<<==
 
+    console.log($scope.arrayEmpleado);
+
+    $scope.Insertar = function () {
       $http({
         method: "POST",
         url: "Api/empleados.php",
