@@ -13,7 +13,7 @@ app.controller("InsertarEmpleados", [
       Fecha_Nacimiento: "",
       Email: "",
       Observaciones_1: "",
-      Foto: "fotooss",
+      Foto: "imagen",
       Fecha_ingreso: "",
       Cargo: "",
       Departamente: "",
@@ -33,7 +33,7 @@ app.controller("InsertarEmpleados", [
     });
     //<<==
 
-    console.log($scope.arrayEmpleado);
+    //console.log($scope.arrayEmpleado);
 
     $scope.Insertar = function () {
       $http({
@@ -41,7 +41,15 @@ app.controller("InsertarEmpleados", [
         url: "Api/empleados.php",
         data: $scope.arrayEmpleado,
       }).then(function (response) {
-        console.log(response);
+        //console.log(response);
+        if(response.data.status == 'ok'){
+          alert("Empleado Ingresado");
+          window.location = "#/";
+          location.reload();
+          return;
+        }else{
+          alert("No se pudo ingresar el Empleado");
+        }
       });
     };
   },

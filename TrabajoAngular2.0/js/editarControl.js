@@ -37,16 +37,6 @@ app.controller("EditarEmpleados", [
       //console.log(response.data);
       $scope.arrayProvincias = response.data;
     });
-/*
-    $http.jsonp('Json/Provincias.json', {})
-				        .then(function(data){
-								 $scope.arrayProvincias2 = data.data;
-				         console.log(data.data);
-				        })
-				        .catch( function(error){
-				          console.warn( error );
-				        });
- */
 
     //<<==
 
@@ -59,23 +49,17 @@ app.controller("EditarEmpleados", [
         url: "Api/empleados.php",
         data: $scope.arrayEmpleado,
       }).then(function (res) {
-        //if(res.data.err === false){
-        //  $scope.actualiado = true;
-        //}
-        console.log(res);
-        console.log(res.data.status);
-        console.log(res.data.result);
+        //console.log(res.data.status);
+        //console.log(res.data.result);
         if(res.data.status == 'ok'){
-          alert("ACTUALIZADO OK");
-          
-          //window.location = "#/";
-          //return;
+          alert("Empleado Actualizado");
+          window.location = "#/";
+          location.reload();
+          return;
         }else{
-          alert("NO SE PUDO ACTUALIZAR");
+          alert("Sin cambios para actualizar");
         }
-        
-        
-        //alert(res.data);
+
       });
     };
     //<<==
@@ -93,17 +77,3 @@ app.controller("EditarEmpleados", [
 ]);
 
 
-/*
-probar
-		$http.jsonp('http://api.openweathermap.org/data/2.5/weather?', { params: params })
-				        .then(function(data){
-								 $scope.clima = data.data;
-				         console.log(data.data);
-				        })
-				        .catch( function(error){
-				          console.warn( error );
-				        })
- 
-}]);
-
-*/

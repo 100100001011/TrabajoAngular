@@ -56,41 +56,6 @@
     
     <div ng-view></div>
 
-    <script>
-         $('#btSalir').click(function(e) {
-                $(location).attr('href', '#!/');
-            });
-        //=======>JQUERY
-        $('#btSalir').click(function(e) {
-            location.reload();
-        });
-
-        //Cambiar de archivo
-        $('#btInsertar').click(function(e) {
-            $(location).attr('href', '#!/Ingreso');
-        });
-        $('#btReporte').click(function(e) {
-            $(location).attr('href', '#!/Reporte');
-        });
-        //Cargar Imagen ficha
-        $(document).on("click", ".browse", function() {
-            var file = $(this).parents().find(".file");
-            file.trigger("click");
-        });
-        $('input[type="file"]').change(function(e) {
-            var fileName = e.target.files[0].name;
-            $("#file").val(fileName);
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById("prevista").src = e.target.result;
-            };
-            reader.readAsDataURL(this.files[0]);
-        });
-      
-        //Vaciar la tabla
-        $("#datos_tablas").empty();
-        //<=========
-    </script>
 </body>
 
 </html>

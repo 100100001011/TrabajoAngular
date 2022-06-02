@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
 
-                                    <label>Provincia</label>{{arrayEmpleado.Provincia_1}}
+                                    <label>Provincia</label>
                                     <select class="form-control" ng-model="arrayEmpleado.Provincia_1" id="inp_provincia1">
                                         <option label="Please Select"></option>
                                         <option ng-repeat="i in arrayProvincias" value="{{i.provincia}}">
@@ -50,7 +50,7 @@
                                     
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label>Fecha de nacimientos</label>{{arrayEmpleado.Fecha_Nacimiento}}
+                                    <label>Fecha de nacimientos</label>
                                     <input type="date" class="form-control" ng-model="arrayEmpleado.Fecha_Nacimiento" id="inp_fecha" placeholder="aaaa-mm-dd" required>
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
@@ -77,7 +77,7 @@
                         <div role="tabpanel" class="tab-pane" id="D_Laborables">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label>Fecha de ingreso</label>{{arrayEmpleado.Fecha_ingreso}}
+                                    <label>Fecha de ingreso</label>
                                     <input type="date" class="form-control" ng-model="arrayEmpleado.Fecha_ingreso" id="inp_fechaingreso" placeholder="aaaa-mm-dd" required>
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
@@ -87,13 +87,13 @@
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label>Departamento:</label>{{arrayEmpleado.Departamente}}
+                                    <label>Departamento:</label>
                                     <input type="text" class="form-control" ng-model="arrayEmpleado.Departamente" id="inp_departamento" placeholder="Departamento" maxlength="20" required>
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
                                 <div class="form-group col-md-6">
 
-                                    <label>Provincia</label>{{arrayEmpleado.Provincia_2}}
+                                    <label>Provincia</label>
                                     <select class="form-control" ng-model="arrayEmpleado.Provincia_2" id="inp_provincia1">
                                         <option label="Please Select"></option>
                                         <option ng-repeat="i in arrayProvincias" value="{{i.provincia}}">
@@ -103,12 +103,12 @@
                                     
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label>Sueldo:</label>{{arrayEmpleado.Sueldo}}
+                                    <label>Sueldo:</label>
                                     <input type="number" step="any" class="form-control" string-to-number ng-model="arrayEmpleado.Sueldo" id="inp_sueldo" placeholder="USD" maxlength="10" required>
                                     <div class="invalid-feedback">Campo requerido.</div>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label>Jornada Parcial:</label>{{arrayEmpleado.Jornada}}
+                                    <label>Jornada Parcial:</label>
                                     <br>
                                     <div class="form-group row-md-4">
                                         <div class="form-check form-check-inline">
@@ -143,4 +143,23 @@
     $('#btSalir').click(function(e) {
         $(location).attr('href', '#!/');
     });
+
+    //Cargar Imagen
+    $(document).on("click", ".browse", function() {
+           var file = $(this).parents().find(".file");
+           file.trigger("click");
+       });
+       $('input[type="file"]').change(function(e) {
+           var fileName = e.target.files[0].name;
+           $("#file").val(fileName);
+
+           var reader = new FileReader();
+           reader.onload = function(e) {
+               document.getElementById("prevista").src = e.target.result;
+               
+               //alert(document.getElementById("prevista").src);
+               //alert(arrayEmpleado.Foto) ;
+           };
+           reader.readAsDataURL(this.files[0]);
+       });
 </script>

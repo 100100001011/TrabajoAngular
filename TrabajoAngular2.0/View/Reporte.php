@@ -1,4 +1,4 @@
-{{arrayEmpleado | json}}
+
 
 <div class="card">
     <div class="card-header">

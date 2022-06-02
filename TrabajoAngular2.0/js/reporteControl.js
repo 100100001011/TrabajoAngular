@@ -14,20 +14,17 @@ app.controller("ReporteEmpleados", [
         method: "GET",
         url: "Api/empleados.php?page=" + $scope.pagina,
       }).then(function (response) {
-        console.log(response.data);
-        
-       
+        //console.log(response.data);
         $scope.arrayEmpleado = response.data;
-        
 
       });
       //<<==
+
+
       $scope.Ordenar = function(RColumnaNombre) {
         $scope.reverse = ($scope.ColumnaNombre === RColumnaNombre) ? !$scope.reverse : true;
         $scope.ColumnaNombre = RColumnaNombre;
 
-        console.log(RColumnaNombre);
-        console.log($scope.ColumnaNombre);
       };
    
   

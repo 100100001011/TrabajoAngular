@@ -1,4 +1,4 @@
-   {{arrayEmpleado | json}}
+
    <div class="container">
 
 
@@ -48,7 +48,7 @@
 
                                <div class="form-group col-md-6">
 
-                                   <label>Provincia</label>{{arrayEmpleado.Provincia_1}}
+                                   <label>Provincia</label>
                                    <select class="form-control" ng-model="arrayEmpleado.Provincia_1" id="inp_provincia1">
                                        <option label="Please Select"></option>
                                        <option ng-repeat="i in arrayProvincias" value="{{i.provincia}}">
@@ -75,7 +75,7 @@
                                    <textarea class="form-control" ng-model="arrayEmpleado.Observaciones_1" id="inp_observacion1" rows="3" placeholder="Observaciones" maxlength="100"></textarea>
                                </div>
                                <div class="form-group col-md-6">
-                                   <label>Fotografia</label>{{arrayEmpleado.Foto}}
+                                   <label>Fotografia</label>
                                    <input type="file" name="img[]" class="file" accept="image/*" id="file_image">
 
                                    <div>
@@ -116,7 +116,7 @@
 
                                <div class="form-group col-md-6">
 
-                                   <label>Provincia</label>{{arrayEmpleado.Provincia_2}}
+                                   <label>Provincia</label>
                                    <select class="form-control" ng-model="arrayEmpleado.Provincia_2" id="inp_provincia1">
                                        <option label="Please Select"></option>
                                        <option ng-repeat="i in arrayProvincias" value="{{i.provincia}}">
@@ -187,14 +187,9 @@
        });
 
 
-       window.onload = function() {
-
-           provincia();
-
-       };
 
        //Cargar Imagen
-       $('#btFoto').on("click", ".browse", function() {
+       $(document).on("click", ".browse", function() {
            var file = $(this).parents().find(".file");
            file.trigger("click");
        });
@@ -205,9 +200,11 @@
            var reader = new FileReader();
            reader.onload = function(e) {
                document.getElementById("prevista").src = e.target.result;
-               alert(document.getElementById("prevista").src);
+               
+               //alert(document.getElementById("prevista").src);
                //alert(arrayEmpleado.Foto) ;
            };
            reader.readAsDataURL(this.files[0]);
        });
+       
    </script>
