@@ -7,6 +7,7 @@ app.controller("EditarEmpleados", [
     $scope.prueba = "prueba";
     $scope.arrayEmpleado = {};
     $scope.arrayProvincias = {};
+    $scope.arrayProvincias2 = {};
     $scope.numero = $routeParams.id;
     
 
@@ -36,6 +37,17 @@ app.controller("EditarEmpleados", [
       //console.log(response.data);
       $scope.arrayProvincias = response.data;
     });
+
+    $http.jsonp('Json/Provincias.json', {})
+				        .then(function(data){
+								 $scope.arrayProvincias2 = data.data;
+				         console.log(data.data);
+				        })
+				        .catch( function(error){
+				          console.warn( error );
+				        });
+ 
+
     //<<==
 
     //==>> GUARDAR DATOS
