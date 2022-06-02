@@ -7,7 +7,7 @@ app.controller("indexControl", [
     
     $scope.arrEmpleados = {};
     $scope.numero = 1;
-    
+        
     $http({
       method: "GET",
       url: "Api/empleados.php?page=" + $scope.numero,
@@ -18,5 +18,11 @@ app.controller("indexControl", [
       }
       $scope.arrEmpleados = response.data;
     });
+
+   
+
   },
+
+
+  
 ]);

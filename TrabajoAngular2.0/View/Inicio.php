@@ -1,3 +1,4 @@
+
         <div class="container">
             <div class="form-group col-md-12">
                 <div class="card-header">
@@ -8,7 +9,7 @@
                 <div class="form-group col-md-4">
 
                     <label>Nombre</label>
-
+                    
                     <input type="text" class="form-control" ng-model="nombre_search" placeholder="Buscar Nombre ">
                 </div>
                 <div class="form-group col-md-4">
@@ -27,7 +28,7 @@
                         </tr>
 
                         <tr ng-repeat="i in arrEmpleados | filter:{Nombre:nombre_search,Cedula:cedula_search}">
-                        <!--<tr ng-repeat="i in arrEmpleados">-->
+                   
                             <td class="text-rigth">{{i.Nombre}} {{i.Apellido}}</td>
                             <td class="text-rigth">{{i.Cedula}}</td>
                             <td class="text-rigth">{{i.Cargo}}</td>
