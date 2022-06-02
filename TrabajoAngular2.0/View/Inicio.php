@@ -1,3 +1,4 @@
+{{arrEmpleados | json}}
 
         <div class="container">
             <div class="form-group col-md-12">
@@ -8,7 +9,7 @@
             <div class="form-group col-md-12">
                 <div class="form-group col-md-4">
 
-                    <label>Nombre</label>
+                    <label>Nombre</label>{{arrEmpleados.Nombre}}
                     
                     <input type="text" class="form-control" ng-model="nombre_search" placeholder="Buscar Nombre ">
                 </div>

@@ -134,19 +134,20 @@
 
 
                                <div class="form-group col-md-6">
-                                   <label>Jornada Parcial:</label>
-                                   <br>
-                                   <div class="form-group row-md-4">
-                                       <div class="form-check form-check-inline">
-                                           <input class="form-check-input" type="radio" name="jornada" id="rad_jornada1" value="S">
-                                           <label class="form-check-label">Si</label>
-                                       </div>
-                                       <div class="form-check form-check-inline">
-                                           <input class="form-check-input" type="radio" name="jornada" id="rad_jornada2" value="N" checked>
-                                           <label class="form-check-label">No</label>
-                                       </div>
-                                   </div>
-                               </div>
+                                    <label>Jornada Parcial:</label>
+                                    <br>
+                                    <div class="form-group row-md-4">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="jornadaS" ng-model="arrayEmpleado.Jornada" id="rad_jornada1" value="S">
+                                            <label class="form-check-label">Si</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="jornadaN" ng-model="arrayEmpleado.Jornada" id="rad_jornada2" value="N">
+                                            <label class="form-check-label">No</label>
+                                        </div>
+
+                                    </div>
+                                </div>
 
                                <div class="form-group col-md-12">
                                    <label for="inputAddress2">Observaciones</label>

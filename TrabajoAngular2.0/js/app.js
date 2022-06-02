@@ -12,6 +12,7 @@ app.controller("indexControl", [
       method: "GET",
       url: "Api/empleados.php?page=" + $scope.numero,
     }).then(function (response) {
+      console.log(response.data);
       if (response.data.err !== undefined) {
         window.location = "#/";
         return;
@@ -21,7 +22,7 @@ app.controller("indexControl", [
 
    
 
-  },
+  }
 
 
   
