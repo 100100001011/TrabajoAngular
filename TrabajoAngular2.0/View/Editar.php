@@ -63,7 +63,6 @@
                                     <label>Observaciones</label>
                                     <textarea class="form-control" ng-model="arrayEmpleado.Observaciones_1" id="inp_observacion1" rows="3" placeholder="Observaciones" maxlength="100"></textarea>
                                 </div>
-                            
                             </div>
                         </div>
                         <!--Etiqueta-->
