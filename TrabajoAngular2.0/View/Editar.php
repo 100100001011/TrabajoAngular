@@ -63,14 +63,7 @@
                                     <label>Observaciones</label>
                                     <textarea class="form-control" ng-model="arrayEmpleado.Observaciones_1" id="inp_observacion1" rows="3" placeholder="Observaciones" maxlength="100"></textarea>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label>Fotografia</label>
-                                    <input type="file" class="file" accept="image/*" id="file_image">
-                                    <div>
-                                        <img ng-src="{{arrayEmpleado.Foto}}" width="100" height="100" id="prevista" class="img-circle">
-                                        <button type="button" class="browse btn btn-primary">Cargar Imagen</button>
-                                    </div>
-                                </div>
+                            
                             </div>
                         </div>
                         <!--Etiqueta-->
