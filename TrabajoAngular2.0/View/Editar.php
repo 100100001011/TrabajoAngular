@@ -136,22 +136,5 @@
         $(location).attr('href', '#!/');
     });
 
-    //Cargar Imagen
-    $(document).on("click", ".browse", function() {
-           var file = $(this).parents().find(".file");
-           file.trigger("click");
-       });
-       $('input[type="file"]').change(function(e) {
-           var fileName = e.target.files[0].name;
-           $("#file").val(fileName);
 
-           var reader = new FileReader();
-           reader.onload = function(e) {
-               document.getElementById("prevista").src = e.target.result;
-               
-               //alert(document.getElementById("prevista").src);
-               //alert(arrayEmpleado.Foto) ;
-           };
-           reader.readAsDataURL(this.files[0]);
-       });
 </script>
