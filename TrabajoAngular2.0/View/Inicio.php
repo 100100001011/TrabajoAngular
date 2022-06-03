@@ -1,4 +1,4 @@
-{{arrEmpleados | json}}
+
 
         <div class="container">
             <div class="form-group col-md-12">

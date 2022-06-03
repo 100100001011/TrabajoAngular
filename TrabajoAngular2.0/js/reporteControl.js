@@ -5,8 +5,9 @@ app.controller("ReporteEmpleados", [
     function ($scope, $http) {
       $scope.pagina = 1;
       $scope.arrayEmpleado = {};
-      $scope.ColumnaNombre = '';
-      $scope.reverse = false;
+      $scope.columna = {
+        columna_1 : ""
+      };
 
         
       //==>> CONSULTAR DATOS GET
@@ -21,12 +22,7 @@ app.controller("ReporteEmpleados", [
       //<<==
 
 
-      $scope.Ordenar = function(RColumnaNombre) {
-        $scope.reverse = ($scope.ColumnaNombre === RColumnaNombre) ? !$scope.reverse : true;
-        $scope.ColumnaNombre = RColumnaNombre;
-
-      };
-   
+ 
   
       
     },

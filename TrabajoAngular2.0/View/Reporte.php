@@ -14,50 +14,50 @@
                 <thead>
                     <tr>
                         <th class="text-center">
-                            <a ng-click="Ordenar('nombre')">Nombre </a>
+                            <a ng-click="columna='Nombre';reves = !reves ;">Nombre </a>
                         </th>
 
                         <th class="text-center">
-                            <a ng-click="Ordenar('cedula')">Cedula </a>
+                            <a ng-click="columna='Cedula';reves = !reves ;">Cedula </a>
                         </th>
                         <th class="text-center">
-                            <a ng-click="Ordenar('provi1')">Provincia </a>
+                            <a ng-click="columna='Provincia_1';reves = !reves ;">Provincia </a>
                         </th>
                         <th class="text-center">
-                            <a ng-click="Ordenar('fecha1')">Fecha Nacimiento </a>
+                            <a ng-click="columna='Fecha_Nacimiento';reves = !reves ;">Fecha Nacimiento </a>
                         </th>
                         <th class="text-center">
-                            <a ng-click="Ordenar('email')">Email </a>
+                            <a ng-click="columna='Email';reves = !reves ;">Email </a>
                         </th>
                         <th class="text-center">
-                            <a ng-click="Ordenar('obser1')">Observaciones </a>
+                            <a ng-click="columna='Observaciones_1';reves = !reves ;">Observaciones </a>
                         </th>
                         <th class="text-center">
-                            <a ng-click="Ordenar('fecha2')">Fecha Ingreso </a>
+                            <a ng-click="columna='Fecha_ingreso';reves = !reves ;">Fecha Ingreso </a>
                         </th>
                         <th class="text-center">
-                            <a ng-click="Ordenar('cargo')">Cargo </a>
+                            <a ng-click="columna='Cargo';reves = !reves ;">Cargo </a>
                         </th>
                         <th class="text-center">
-                            <a ng-click="Ordenar('depart')">Departamento </a>
+                            <a ng-click="columna='Departamente';reves = !reves ;">Departamento </a>
                         </th>
                         <th class="text-center">
-                            <a ng-click="Ordenar('provi2')">Provincia </a>
+                            <a ng-click="columna='Provincia_2';reves = !reves ;">Provincia </a>
                         </th>
                         <th class="text-center">
-                            <a ng-click="Ordenar('sueldo')">Sueldo </a>
+                            <a ng-click="columna='Sueldo';reves = !reves ;">Sueldo </a>
                         </th>
                         <th class="text-center">
-                            <a ng-click="Ordenar('jornada')">Jornada </a>
+                            <a ng-click="columna='Jornada';reves = !reves ;">Jornada </a>
                         </th>
                         <th class="text-center">
-                            <a ng-click="Ordenar('obser2')">Observaciones </a>
+                            <a ng-click="columna='Observaciones_2';reves = !reves ;">Observaciones </a>
                         </th>
 
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="i in arrEmpleados | orderBy: ColumnaNombre:reverse">
+                    <tr ng-repeat="i in arrEmpleados | orderBy: columna :reves">
 
                         <td class="text-rigth">{{i.Nombre +' '+ i.Apellido}}</td>
                         <td class="text-rigth">{{i.Cedula}}</td>
